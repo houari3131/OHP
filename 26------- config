@@ -1,0 +1,452 @@
+
+// Check if the current URL does not include "generate captcha"
+if (!window.location.href.includes("/GenerateCaptcha")) {
+    
+    // Function to dynamically load a script
+    function loadScript(url, callback) {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = url;
+        script.onload = callback;
+        document.head.appendChild(script);
+    }
+
+    // Function to dynamically load a stylesheet
+    function loadStylesheet(url) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = url;
+        document.head.appendChild(link);
+    }
+
+    // Load flatpickr CSS
+    loadStylesheet('https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.css');
+
+    // Load flatpickr script
+    loadScript('https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js', function() {
+        // Load flatpickr French locale script
+        loadScript('https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/l10n/fr.js', initializeScript);
+    });
+
+    function initializeScript() {
+        const defaultSettings = [
+           'Auto Refresh',
+            'Random Refresh',
+            'Successive Refresh',
+            'Captcha Login Auto Solve',
+            'Captcha Visa Type Auto Solve',
+            'Auto Select Date',
+            'Auto Upload Photo',
+            'Auto Calendar ByPass Captcha',
+            'Auto Send Otp',
+            'Auto Selfi',
+            'Auto skip',
+            'Random Mobile Number',
+            'Random Passport Issue Place',
+            'Random Passport Issue And Expiry Date'
+        ];
+
+        // Set default settings to true if they are not already set
+        defaultSettings.forEach(setting => {
+            if (localStorage.getItem(setting) === null) {
+                localStorage.setItem(setting, 'true');
+            }
+        });
+
+        // Ensure Random Refresh and Successive Refresh are mutually exclusive
+        function setMutuallyExclusive(ref1, ref2) {
+            const ref1Value = localStorage.getItem(ref1) === 'true';
+            localStorage.setItem(ref1, ref1Value.toString());
+            localStorage.setItem(ref2, (!ref1Value).toString());
+        }
+
+        setMutuallyExclusive('Random Refresh', 'Successive Refresh');
+
+        // Function to create and return a styled button
+        function createButton(text, onClickFunction, color, topOffset) {
+            var button = document.createElement("button");
+            button.innerHTML = text;
+            button.style.position = "fixed";
+            button.style.top = topOffset + "px";
+            button.style.right = "10px";
+            button.style.zIndex = "10001"; // Ensure the button is above other elements
+            button.style.padding = "10px 20px";
+            button.style.background = `linear-gradient(to bottom, ${color[0]}, ${color[1]})`;
+            button.style.color = "white";
+            button.style.border = "none";
+            button.style.cursor = "pointer";
+            button.style.borderRadius = "20px";
+            button.style.userSelect = "none"; // Prevent text selection
+            button.style.fontSize = "16px";
+            button.style.fontWeight = "bold";
+            button.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2)";
+            button.style.textShadow = "1px 1px 2px rgba(0, 0, 0, 0.5)";
+            button.style.transition = "transform 0.2s"; // Animation for click effect
+            button.style.pointerEvents = "auto"; // Ensure the button is clickable
+
+            button.addEventListener("click", onClickFunction);
+
+            // Add click animation effect
+            button.addEventListener("mousedown", function() {
+                button.style.transform = "scale(0.95)";
+            });
+            button.addEventListener("mouseup", function() {
+                button.style.transform = "scale(1)";
+            });
+
+            // Prevent button from being dragged accidentally
+            button.ondragstart = function() {
+                return false;
+            };
+
+            return button;
+        }
+
+
+        // Function to create and return a styled button
+        function createButtonLeft(text, onClickFunction, color, topOffset) {
+            var button = document.createElement("button");
+            button.innerHTML = text;
+            button.style.position = "fixed";
+            button.style.top = topOffset + "px";
+            button.style.left = "10px";
+            button.style.zIndex = "10001"; // Ensure the button is above other elements
+            button.style.padding = "10px 20px";
+            button.style.background = `linear-gradient(to bottom, ${color[0]}, ${color[1]})`;
+            button.style.color = "white";
+            button.style.border = "none";
+            button.style.cursor = "pointer";
+            button.style.borderRadius = "20px";
+            button.style.userSelect = "none"; // Prevent text selection
+            button.style.fontSize = "16px";
+            button.style.fontWeight = "bold";
+            button.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2)";
+            button.style.textShadow = "1px 1px 2px rgba(0, 0, 0, 0.5)";
+            button.style.transition = "transform 0.2s"; // Animation for click effect
+            button.style.pointerEvents = "auto"; // Ensure the button is clickable
+
+            button.addEventListener("click", onClickFunction);
+
+            // Add click animation effect
+            button.addEventListener("mousedown", function() {
+                button.style.transform = "scale(0.95)";
+            });
+            button.addEventListener("mouseup", function() {
+                button.style.transform = "scale(1)";
+            });
+
+            // Prevent button from being dragged accidentally
+            button.ondragstart = function() {
+                return false;
+            };
+
+            return button;
+        }
+
+
+
+
+     
+
+
+
+
+
+
+        // Config Button
+
+        var configButton = createButton("Config", function() {
+            
+         
+            configMenu.style.display = configMenu.style.display === 'none' ? 'block' : 'none';
+            DownloadExtension.style.display = DownloadExtension.style.display === 'none' ? 'block' : 'none';
+            RotateIpButton.style.display = RotateIpButton.style.display === 'none' ? 'block' : 'none';
+            
+        }, ["#ff9999", "#ff6666"], 130);
+        document.body.appendChild(configButton);
+
+        // Date Reflash Button
+        var dateReflashButton = createButton("Date Refresh", function() {
+            datePickerMenu.style.display = datePickerMenu.style.display === 'none' ? 'block' : 'none';
+        }, ["#ff9999", "#ff6666"], 190);
+        document.body.appendChild(dateReflashButton);
+
+
+        if(!['TrueCaptcha', 'NoCaptchaAi'].includes(localStorage.CaptchaType)){
+            localStorage.CaptchaType = 'NoCaptchaAi';
+            }
+             
+    // Set CaptchaType from localStorage or default to 'NoCaptchaAi'
+    localStorage.CaptchaType = localStorage.CaptchaType || 'NoCaptchaAi';
+    
+    // Create the ForbesCaptchaType button
+    var ForbesCaptchaType = createButton("Forbes " + localStorage.CaptchaType, function() {
+        // Toggle between 'NoCaptchaAi' and 'TrueCaptcha'
+        if (localStorage.CaptchaType === 'NoCaptchaAi') {
+            localStorage.CaptchaType = 'TrueCaptcha';
+            this.textContent = "Forbes TrueCaptcha"; // Use 'this' to reference the clicked button
+        } else {
+            localStorage.CaptchaType = 'NoCaptchaAi';
+            this.textContent = "Forbes NoCaptchaAi"; // Use 'this' to reference the clicked button
+        }
+    }, ["#ff9999", "#ff6666"], 250);
+    
+    // Append the button to the body
+    document.body.appendChild(ForbesCaptchaType);
+    
+           
+
+        var LogOutButton = createButton("LogOut", function() {
+           
+
+            function OnLogoutSubmit() {
+                ShowLoader();
+                $.ajax({
+                    type: "POST",
+                    url: "/MAR/account/logout",
+                    success: function (response) {
+                        HideLoader();
+                        if (response != "" && response != null && response.success === true) {
+                            window.location.href = 'https://morocco.blsportugal.com/MAR/bls/vtv0001';
+                        }
+                    },
+                    error: function (response) {
+                        HideLoader();
+                        alert(response.error);
+                    },
+                });
+                return false;
+            }
+            OnLogoutSubmit();
+        }, ["#ff9999", "#ff6666"], 310);
+        document.body.appendChild(LogOutButton);
+
+
+
+        // Create the config menu
+        const configMenu = document.createElement('div');
+        configMenu.style.position = 'fixed';
+        configMenu.style.top = '0';
+        configMenu.style.left = '0';
+        configMenu.style.width = '100%'; // Full width
+        configMenu.style.height = '100%'; // Full height
+        configMenu.style.backgroundColor = 'rgba(255, 255, 255, 0.9)'; // Semi-transparent background
+        configMenu.style.border = '1px solid #ccc';
+        configMenu.style.borderRadius = '10px';
+        configMenu.style.display = 'none';
+        configMenu.style.zIndex = '10000'; // Ensure the config menu is above all elements but below the buttons
+        configMenu.style.overflow = 'auto'; // Add scrolling if content overflows
+        configMenu.style.padding = '20px';
+        configMenu.style.pointerEvents = "auto"; // Ensure the config menu is interactive
+        document.body.appendChild(configMenu);
+
+        // Create and add checkboxes to the config menu
+        const options = [
+             'Auto Refresh',
+            'Random Refresh',
+            'Successive Refresh',
+            'Captcha Login Auto Solve',
+            'Captcha Visa Type Auto Solve',
+            'Auto Select Date',
+            'Auto Upload Photo',
+            'Auto Calendar ByPass Captcha',
+            'Auto Send Otp',
+            'Auto Selfi',
+            'Auto skip',
+            'Random Mobile Number',
+            'Random Passport Issue Place',
+            'Random Passport Issue And Expiry Date'
+        ];
+
+        options.forEach(option => {
+            const label = document.createElement('label');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = localStorage.getItem(option) === 'true';
+            checkbox.onchange = () => {
+                if (option === 'Random Refresh' || option === 'Successive Refresh') {
+                    localStorage.setItem(option, checkbox.checked.toString());
+                    if (checkbox.checked) {
+                        if (option === 'Random Refresh') {
+                            localStorage.setItem('Successive Refresh', 'false');
+                            document.getElementById('Successive Refresh').checked = false;
+                        } else {
+                            localStorage.setItem('Random Refresh', 'false');
+                            document.getElementById('Random Refresh').checked = false;
+                        }
+                    } else {
+                        if (option === 'Random Refresh') {
+                            localStorage.setItem('Successive Refresh', 'true');
+                            document.getElementById('Successive Refresh').checked = true;
+                        } else {
+                            localStorage.setItem('Random Refresh', 'true');
+                            document.getElementById('Random Refresh').checked = true;
+                        }
+                    }
+                } else {
+                    localStorage.setItem(option, checkbox.checked);
+                }
+            };
+            checkbox.id = option;
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(option));
+            configMenu.appendChild(label);
+            configMenu.appendChild(document.createElement('br'));
+        });
+
+        // Create and add the submit button to the config menu
+        const submitButton = document.createElement('button');
+        submitButton.innerText = 'Submit';
+        submitButton.style.padding = "10px 20px";
+        submitButton.style.background = `linear-gradient(to bottom, #99ff99, #66ff66)`;
+        submitButton.style.color = "white";
+        submitButton.style.border = "none";
+        submitButton.style.cursor = "pointer";
+        submitButton.style.borderRadius = "20px";
+        submitButton.style.userSelect = "none"; // Prevent text selection
+        submitButton.style.fontSize = "16px";
+        submitButton.style.fontWeight = "bold";
+        submitButton.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2)";
+        submitButton.style.textShadow = "1px 1px 2px rgba(0, 0, 0, 0.5)";
+        submitButton.style.transition = "transform 0.2s"; // Animation for click effect
+        submitButton.addEventListener("mousedown", function() {
+            submitButton.style.transform = "scale(0.95)";
+        });
+        submitButton.addEventListener("mouseup", function() {
+            submitButton.style.transform = "scale(1)";
+        });
+        submitButton.onclick = () => {
+            configMenu.style.display = 'none';
+                DownloadExtension.style.display = DownloadExtension.style.display === 'none' ? 'block' : 'none';
+            RotateIpButton.style.display = RotateIpButton.style.display === 'none' ? 'block' : 'none';
+        };
+        submitButton.style.position = "relative";
+        submitButton.style.marginTop = "10px";
+        configMenu.appendChild(submitButton);
+
+        // Create the date picker menu
+        const datePickerMenu = document.createElement('div');
+        datePickerMenu.style.position = 'fixed';
+        datePickerMenu.style.top = '0';
+        datePickerMenu.style.left = '50%'; // Center the date picker menu horizontally
+        datePickerMenu.style.transform = 'translateX(-50%)'; // Center the date picker menu
+        datePickerMenu.style.width = '50%'; // Half width
+        datePickerMenu.style.backgroundColor = 'rgba(255, 255, 255, 0.9)'; // Semi-transparent background
+        datePickerMenu.style.border = '1px solid #ccc';
+        datePickerMenu.style.borderRadius = '10px';
+        datePickerMenu.style.display = 'none';
+        datePickerMenu.style.zIndex = '10000'; // Ensure the date picker menu is above all elements but below the buttons
+        datePickerMenu.style.overflow = 'auto'; // Add scrolling if content overflows
+        datePickerMenu.style.padding = '20px';
+        datePickerMenu.style.pointerEvents = "auto"; // Ensure the date picker menu is interactive
+        document.body.appendChild(datePickerMenu);
+
+        // Function to save selected dates to localStorage for a city
+        function saveDates(city, dates) {
+            localStorage.setItem(city + 'Dates', JSON.stringify(dates));
+        }
+
+        // Function to clear selected dates for a city from localStorage, input field, and flatpickr instance
+        function clearDates(city) {
+            localStorage.removeItem(city + 'Dates');
+            const dateInput = document.getElementById(city + 'DatePicker');
+            if (dateInput && dateInput._flatpickr) {
+                dateInput._flatpickr.clear();
+            }
+        }
+
+        // Function to handle date selection and saving
+        function handleDateSelection(city) {
+            return function(selectedDates, dateStr, instance) {
+                let cityDatesArray = selectedDates.map(date => instance.formatDate(date, "Y-m-d"));
+                saveDates(city, cityDatesArray);
+            };
+        }
+
+        // Create and add a date picker input using flatpickr for each city
+        const cities = [            
+            { name: 'CasaShengen', label: 'Casablanca (Shengen)' },
+            { name: 'Rabat', label: 'Rabat' },           
+        ];
+
+        cities.forEach(city => {
+            const container = document.createElement('div');
+            container.style.display = 'flex';
+            container.style.alignItems = 'center';
+            container.style.marginBottom = '10px';
+
+            const label = document.createElement('label');
+            label.innerText = city.label + ': ';
+            label.style.fontWeight = 'bold';
+            label.style.fontSize = '18px';
+            label.style.marginRight = '10px';
+            container.appendChild(label);
+
+            const dateInput = document.createElement('input');
+            dateInput.id = city.name + 'DatePicker';
+            dateInput.style.flex = '1';
+            container.appendChild(dateInput);
+
+            const clearButton = document.createElement('button');
+            clearButton.innerText = 'Clear';
+            clearButton.style.marginLeft = '10px';
+            clearButton.style.padding = '5px 10px';
+            clearButton.style.background = `linear-gradient(to bottom, #ff9999, #ff6666)`;
+            clearButton.style.color = 'white';
+            clearButton.style.border = 'none';
+            clearButton.style.cursor = 'pointer';
+            clearButton.style.borderRadius = '5px';
+            clearButton.addEventListener('click', () => clearDates(city.name));
+            container.appendChild(clearButton);
+
+            datePickerMenu.appendChild(container);
+
+            const fp = flatpickr("#" + city.name + "DatePicker", {
+                mode: "multiple",
+                dateFormat: "Y-m-d",
+                locale: "fr",
+                onClose: handleDateSelection(city.name)
+            });
+
+            // Load saved dates from localStorage
+            const savedDates = JSON.parse(localStorage.getItem(city.name + 'Dates'));
+            if (savedDates && savedDates.length > 0) {
+                fp.setDate(savedDates);
+            }
+        });
+
+        // Create Save and Exit buttons
+        const buttonContainer = document.createElement('div');
+        buttonContainer.style.display = 'flex';
+        buttonContainer.style.justifyContent = 'space-between';
+        buttonContainer.style.marginTop = '20px';
+
+        const saveButton = document.createElement('button');
+        saveButton.innerText = 'Save';
+        saveButton.style.padding = '10px 20px';
+        saveButton.style.background = `linear-gradient(to bottom, #99ff99, #66ff66)`;
+        saveButton.style.color = 'white';
+        saveButton.style.border = 'none';
+        saveButton.style.cursor = 'pointer';
+        saveButton.style.borderRadius = '5px';
+        saveButton.addEventListener('click', () => {
+            datePickerMenu.style.display = 'none';
+        });
+        buttonContainer.appendChild(saveButton);
+
+        const exitButton = document.createElement('button');
+        exitButton.innerText = 'Exit';
+        exitButton.style.padding = '10px 20px';
+        exitButton.style.background = `linear-gradient(to bottom, #ff9999, #ff6666)`;
+        exitButton.style.color = 'white';
+        exitButton.style.border = 'none';
+        exitButton.style.cursor = 'pointer';
+        exitButton.style.borderRadius = '5px';
+        exitButton.addEventListener('click', () => {
+            datePickerMenu.style.display = 'none';
+        });
+        buttonContainer.appendChild(exitButton);
+
+        datePickerMenu.appendChild(buttonContainer);
+    }
+}

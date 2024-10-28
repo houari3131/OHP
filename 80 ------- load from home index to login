@@ -1,0 +1,5 @@
+if(window.location.href.includes("index")){
+
+window.location.href = 'https://morocco.blsportugal.com/MAR/bls/vtv0001';
+
+}
