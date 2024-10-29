@@ -6,32 +6,32 @@ localStorage.noti = 'OK';
 
     const scriptMappings = [
 
-        { includes: 'https://morocco.blsportugal.com/', urls: ['http://localhost:5000/fetch-script/1',
-'http://localhost:5000/fetch-script/7','http://localhost:5000/fetch-script/13','http://localhost:5000/fetch-script/15','http://localhost:5000/fetch-script/18',
-'http://localhost:5000/fetch-script/22','http://localhost:5000/fetch-script/26','http://localhost:5000/fetch-script/80']},
-        { includes: '/account/Login', urls: ['http://localhost:5000/fetch-script/2'] },
-        { includes: '/Account/LogIn', urls: ['http://localhost:5000/fetch-script/2'] },
- { includes: '/account/login', urls: ['http://localhost:5000/fetch-script/script2'] },
-        { includes: 'home/index', urls: ['http://localhost:5000/fetch-script/script15','http://localhost:5000/fetch-script/13']},
-   { includes: 'Home/index', urls: ['http://localhost:5000/fetch-script/script15','http://localhost:5000/fetch-script/13']},
-      //  { includes: 'MAR/newcaptcha/logincaptcha', urls: ['http://localhost:5000/fetch-script/2','http://localhost:5000/fetch-script/3','http://localhost:5000/fetch-script/9'] },
-        { includes: '/MAR/bls/vtv', urls: ['http://localhost:5000/fetch-script/4','http://localhost:5000/fetch-script/9'] },
-        { includes: '/MAR/Bls/vtv', urls: ['http://localhost:5000/fetch-script/4','http://localhost:5000/fetch-script/9'] },
+        { includes: 'https://morocco.blsportugal.com/', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/1',
+'http://localhost:' + localStorage.portu+'/fetch-script/7','http://localhost:' + localStorage.portu+'/fetch-script/13','http://localhost:' + localStorage.portu+'/fetch-script/15','http://localhost:' + localStorage.portu+'/fetch-script/18',
+'http://localhost:' + localStorage.portu+'/fetch-script/22','http://localhost:' + localStorage.portu+'/fetch-script/26','http://localhost:' + localStorage.portu+'/fetch-script/80']},
+        { includes: '/account/Login', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2'] },
+        { includes: '/Account/LogIn', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2'] },
+ { includes: '/account/login', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script2'] },
+        { includes: 'home/index', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script15','http://localhost:' + localStorage.portu+'/fetch-script/13']},
+   { includes: 'Home/index', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script15','http://localhost:' + localStorage.portu+'/fetch-script/13']},
+      //  { includes: 'MAR/newcaptcha/logincaptcha', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2','http://localhost:' + localStorage.portu+'/fetch-script/3','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
+        { includes: '/MAR/bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/4','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
+        { includes: '/MAR/Bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/4','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
 
-       { includes: '/MAR/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:5000/fetch-script/5'] },
+       { includes: '/MAR/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/5'] },
 
-        { includes: '/MAR/bls/vt', urls: ['http://localhost:5000/fetch-script/6','http://localhost:5000/fetch-script/9',,'http://localhost:5000/fetch-script/19'] },
-        { includes: '/MAR/Bls/vt', urls: ['http://localhost:5000/fetch-script/6','http://localhost:5000/fetch-script/9',,'http://localhost:5000/fetch-script/19'] },
-        { includes: '/MAR/blsappointment/manageappointment', urls: ['http://localhost:5000/fetch-script/10','http://localhost:5000/fetch-script/32','http://localhost:5000/fetch-script/11','http://localhost:5000/fetch-script/12','http://localhost:5000/fetch-script/14','http://localhost:5000/fetch-script/21','http://localhost:5000/fetch-script/24','http://localhost:5000/fetch-script/25']},
-       { includes: 'livenessdetection', urls: ['http://localhost:5000/fetch-script/20'] },
-       { includes: 'RegisterUser', urls: ['http://localhost:5000/fetch-script/23'] },
-      { includes: '/DataProtectionEmailSent', urls: ['http://localhost:5000/fetch-script/33'] },
-{ includes: '/dataprotectionemailaccept', urls: ['http://localhost:5000/fetch-script/34'] },
-      //  { includes: '/DZA/Bls/vt', urls: ['http://localhost:5000/fetch-script/4'] },
+        { includes: '/MAR/bls/vt', urls: ['http:/a/localhost:' + localStorage.portu+'/fetch-script/6','http://localhost:' + localStorage.portu+'/fetch-script/9',,'http://localhost:' + localStorage.portu+'/fetch-script/19'] },
+        { includes: '/MAR/Bls/vt', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/6','http://localhost:' + localStorage.portu+'/fetch-script/9',,'http://localhost:' + localStorage.portu+'/fetch-script/19'] },
+        { includes: '/MAR/blsappointment/manageappointment', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/10','http://localhost:' + localStorage.portu+'/fetch-script/32','http://localhost:' + localStorage.portu+'/fetch-script/11','http://localhost:' + localStorage.portu+'/fetch-script/12','http://localhost:' + localStorage.portu+'/fetch-script/14','http://localhost:' + localStorage.portu+'/fetch-script/21','http://localhost:' + localStorage.portu+'/fetch-script/24','http://localhost:' + localStorage.portu+'/fetch-script/25']},
+       { includes: 'livenessdetection', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/20'] },
+       { includes: 'RegisterUser', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/23'] },
+      { includes: '/DataProtectionEmailSent', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/33'] },
+{ includes: '/dataprotectionemailaccept', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/34'] },
+      //  { includes: '/DZA/Bls/vt', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/4'] },
       
 
 
-      //  { includes: '/DZA/bls/vtv', urls: ['http://localhost:5000/fetch-script/script1'] },
+      //  { includes: '/DZA/bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script1'] },
         // أضف المزيد من الروابط هنا حسب الحاجة
     ];
 
