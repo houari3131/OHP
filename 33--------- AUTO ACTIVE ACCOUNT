@@ -7,7 +7,7 @@
     // Function to send POST request and handle the response
     async function fetchConsentLink() {
         try {
-            const response = await fetch('http://localhost:5000/fetch-consent-link', { // Change to your server URL
+            const response = await fetch('http://localhost:'+ localStorage.portu +'/fetch-consent-link', { // Change to your server URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
