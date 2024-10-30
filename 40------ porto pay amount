@@ -102,3 +102,5 @@ if(localStorage.portu == '5000' || localStorage.portu == '5001'  || localStorage
          }, ["#ff9999", "#ff6666"], 60);
 
         document.body.appendChild(PaymentButton);
+
+}
