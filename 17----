@@ -8,7 +8,9 @@ localStorage.noti = 'OK';
 
         { includes: 'https://morocco.blsportugal.com/', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/1',
 'http://localhost:' + localStorage.portu+'/fetch-script/7','http://localhost:' + localStorage.portu+'/fetch-script/13','http://localhost:' + localStorage.portu+'/fetch-script/15','http://localhost:' + localStorage.portu+'/fetch-script/18',
-'http://localhost:' + localStorage.portu+'/fetch-script/22','http://localhost:' + localStorage.portu+'/fetch-script/26','http://localhost:' + localStorage.portu+'/fetch-script/80']},
+'http://localhost:' + localStorage.portu+'/fetch-script/22',
+'http://localhost:' + localStorage.portu+'/fetch-script/26',
+'http://localhost:' + localStorage.portu+'/fetch-script/80','http://localhost:' + localStorage.portu+'/fetch-script/40']},
         { includes: '/account/Login', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2'] },
         { includes: '/Account/LogIn', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2'] },
  { includes: '/account/login', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script2'] },
