@@ -1,0 +1,112 @@
+
+
+
+    // Function to create and return a styled button
+        function createButton(text, onClickFunction, color, topOffset) {
+            var button = document.createElement("button");
+            button.innerHTML = text;
+            button.style.position = "fixed";
+            button.style.top = topOffset + "px";
+            button.style.left = "10px";
+            button.style.zIndex = "10001"; // Ensure the button is above other elements
+            button.style.padding = "10px 20px";
+            button.style.background = `linear-gradient(to bottom, ${color[0]}, ${color[1]})`;
+            button.style.color = "white";
+            button.style.border = "none";
+            button.style.cursor = "pointer";
+            button.style.borderRadius = "20px";
+            button.style.userSelect = "none"; // Prevent text selection
+            button.style.fontSize = "16px";
+            button.style.fontWeight = "bold";
+            button.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2)";
+            button.style.textShadow = "1px 1px 2px rgba(0, 0, 0, 0.5)";
+            button.style.transition = "transform 0.2s"; // Animation for click effect
+            button.style.pointerEvents = "auto"; // Ensure the button is clickable
+
+            button.addEventListener("click", onClickFunction);
+
+            // Add click animation effect
+            button.addEventListener("mousedown", function() {
+                button.style.transform = "scale(0.95)";
+            });
+            button.addEventListener("mouseup", function() {
+                button.style.transform = "scale(1)";
+            });
+
+            // Prevent button from being dragged accidentally
+            button.ondragstart = function() {
+                return false;
+            };
+
+            return button;
+        }
+
+
+
+
+
+       var PaymentButton = createButton("Pay Amount", function() {
+         function FobressPayPorto() {
+        var selected = [];
+        $('.vac-check:input[type="checkbox"]').each(function () {
+            if (this.checked) {
+                var item = $(this);
+                var serviceid = item.data("service-id");
+                var count = $("#num_" + serviceid).val();
+                selected.push(serviceid + '_' + count);
+
+            }
+        });
+        console.log(selected)
+        $("#ValueAddedServices").val(selected.join(','));
+              var data = { Id: $("#Id").val(),ValueAddedServices: $("#ValueAddedServices").val() };
+               pd = data;
+        
+        $('.payment-body').html('Please wait while we are redirecting to payment gateway...');
+        document.getElementById("payConfirm").disabled = true;
+        document.getElementById("payCancel").disabled = true;
+          
+     
+     
+     ShowLoader();
+
+       $.ajax({
+            type: "POST",
+           url: "/MAR/payment/pr",
+           data: { 'Id': $("#Id").val() , 'ValueAddedServices': pd.ValueAddedServices ,'Id1':$("#Id4").val()},
+            success: function (res) {
+                if (res.success) {
+                    if (res.requestURL === null || res.requestURL === '' || res.requestURL === undefined) {
+                        HideLoader();
+                        alert(res.error);
+                        return false;
+                    }
+                    else {
+                        window.top.location.href = res.requestURL;
+                    }
+                } else {
+                    $('#payConfirmModal').modal('hide');
+                    document.getElementById("payConfirm").disabled = false;
+                    document.getElementById("payCancel").disabled = false;
+                    HideLoader();
+                    ShowError(res.error);
+
+                }
+            },
+            dataType: "json",
+        });
+      
+
+    }   
+
+         }, ["#ff9999", "#ff6666"], 60);
+
+        document.body.appendChild(PaymentButton);
+
+
+
+
+
+
+
+
