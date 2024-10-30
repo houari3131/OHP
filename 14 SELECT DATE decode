@@ -76,6 +76,7 @@ function getElementsId() {
         const element = $('#' + elementId);
         if (element.is(':visible')) {
             dateID = elementId;
+            localStorage.AppointmentDate = dateID;
         }
     }
     var ids = ['AppointmentSlot1', 'AppointmentSlot2', 'AppointmentSlot3', 'AppointmentSlot4', 'AppointmentSlot5'];
@@ -83,6 +84,7 @@ function getElementsId() {
         var element = $(".k-widget.k-dropdown.form-control[aria-owns='" + id + "_listbox']");
         if (element.is(":visible")) {
             timeID = "AppointmentSlot" + id.slice(15);
+            localStorage.AppointmentSlot = timeID;
         }
     });
 }
@@ -749,7 +751,7 @@ async function GetOtp(){
             redirect: 'follow'
         };
         try {
-            const response = await fetch("http://localhost:5000/otp2", requestOptions);
+            const response = await fetch("http://localhost:"+ localStorage.portu +"/otp2", requestOptions);
             const result = await response.json();
             otp = result;
         } catch (error) {
@@ -953,7 +955,7 @@ $.ajax({
             redirect: 'follow'
         };
         try {
-            const response = await fetch("http://localhost:5000/otp2", requestOptions);
+            const response = await fetch("http://localhost:"+localStorage.portu +"/otp2", requestOptions);
             const result = await response.json();
             otp = result;
         } catch (error) {
