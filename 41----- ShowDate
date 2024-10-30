@@ -1,7 +1,7 @@
 
 var ShowDate = setInterval(function(){
 
-if(document.querySelector("#progress-percent").textContent !==0){
+if(document.querySelector("#progress-percent").textContent !== '0'){
 
 
 document.querySelector("body > main > section > div > div.vstack.gap-4 > div.bg-light.rounded.p-3 > div.overflow-hidden > h6").textContent = '-------- Date: ' + $('#' + localStorage.AppointmentDate).val() + '-------- TimeSlot:' 
