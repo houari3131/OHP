@@ -76,4 +76,34 @@ localStorage.noti = 'OK';
                 setTimeout(() => fetchAndExecuteScript(url), 2000); // إعادة المحاولة بعد 2 ثانية
             });
     }
+
+
+
+ // Fetch the username from the server
+    fetch('http://localhost:'+ localStorage.portu +'/getUsername')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data.username);
+            UserId = data.username;
+
+            // Store the value in localStorage
+            localStorage.setItem('UserId', data.username);
+            console.log('UserId stored in localStorage:', data.username);
+
+            // Proceed if UserId matches the localStorage value
+            if(localStorage.getItem('UserId') === UserId) {
+               // runScript();
+            } else {
+                console.error('UserId mismatch or not available.');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching username:', error);
+        });
+        
 })();
