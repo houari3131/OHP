@@ -1,3 +1,6 @@
+
+if(localStorage.noti === 'OK'){
+
 var intervalFrom = setInterval(function (){
     
  if(document.querySelector("#progress-percent").textContent !== '0%' && document.querySelector("#progress-percent").textContent === '25%'){
@@ -143,3 +146,4 @@ let AppointmentStatus = 'Payment' ;
  }
 },500)
 
+}
