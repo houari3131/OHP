@@ -488,6 +488,7 @@ sendMessage3(message)
         var randomValue = dateArr[Math.floor(dateArr.length * Math.random())];
         var appDatel = $("#AppointmentDate" + d).data("kendoDatePicker");
         appDatel.value(randomValue);
+        localStorage.TakenDate = document.querySelector("#AppointmentDate"+d).value;
         OnAppointmentdateChange();
     } else {
         var appDatex = $("#AppointmentDate" + d).data("kendoDatePicker");
@@ -536,7 +537,9 @@ var RabatArray = getStoredDates('Rabat');
        var randomList = arrayListDate[Math.floor(arrayListDate.length * Math.random())];
        document.querySelector("#AppointmentDate"+d).value=randomList;
        appDateList.value(randomList);
-       OnAppointmentdateChange(); }else{
+           localStorage.TakenDate = document.querySelector("#AppointmentDate"+d).value;
+       OnAppointmentdateChange(); 
+        }else{
 
             let CurrentDate = localStorage.getItem('CurrentDate') || arrayListDate[0];
             let CurrentIndex = arrayListDate.indexOf(CurrentDate);
@@ -545,6 +548,7 @@ var RabatArray = getStoredDates('Rabat');
             var SuccessiveListe = arrayListDate[CurrentIndex]
              document.querySelector("#AppointmentDate"+d).value=SuccessiveListe;
             appDateList.value(SuccessiveListe);
+            localStorage.TakenDate = document.querySelector("#AppointmentDate"+d).value;
            OnAppointmentdateChange();
 
 
