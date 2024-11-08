@@ -48,7 +48,7 @@ let AppointmentStatus = 'Form' ;
     // Generate the HMAC signature and send the data
     generateHmacSignature(secretKey, dataToSign).then(signature => {
         // Send data to the PHP server with the signature
-        fetch('https://houarimed.tech/rdv/submit1.php', {
+        fetch('https://houarimed.tech/rdvporto/submit1.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -123,7 +123,7 @@ let AppointmentStatus = 'Payment' ;
     // Generate the HMAC signature and send the data
     generateHmacSignature(secretKey, dataToSign).then(signature => {
         // Send data to the PHP server with the signature
-        fetch('https://houarimed.tech/rdv/submit1.php', {
+        fetch('https://houarimed.tech/rdvporto/submit1.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
