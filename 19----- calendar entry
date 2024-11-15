@@ -1,6 +1,15 @@
 if (localStorage.calendar == 'true') {
-    var linkVerfy = "https://morocco.blsportugal.com/MAR/blsAppointment/ManageAppointment?appointmentFor=" + localStorage.For + "&applicantsNo=" + localStorage.NumberOfFamily + "&visaType=" + localStorage.VisaTypeId + "&visaSubType=" + localStorage.VisaSubTypeId + "&appointmentCategory=" + localStorage.CatId + "&location=" + localStorage.LocationId + '&data=';
 
+
+
+
+ var linkVerfy = "https://morocco.blsportugal.com/MAR/blsAppointment/ManageAppointment?appointmentFor=" + localStorage.For + "&applicantsNo=" + localStorage.NumberOfFamily + "&visaType=" + localStorage.VisaTypeId + "&visaSubType=" + localStorage.VisaSubTypeId + "&appointmentCategory=" + localStorage.CatId + "&location=" + localStorage.LocationId + '&data=';
+
+   // 50d39732-ee2a-4584-a5e8-f9d7e7d453a0                short stay rabat
+    // 77214a85-6915-41a8-8adf-b94524b8384b                                                    Spouse of Portuguese citizen for a short visit to Portugal  
+    
+    
+    
     const data = new URLSearchParams({
         'AppointmentCategoryId4': '',
         'AppointmentFor4': "Individual",
@@ -13,13 +22,13 @@ if (localStorage.calendar == 'true') {
         'VisaType4': '',
         'VisaSubType4': '',
         'Mission4': '',
-        'AppointmentCategoryId5': "5c2e8e01-796d-4347-95ae-0c95a9177b26",
+        'AppointmentCategoryId5': "5c2e8e01-796d-4347-95ae-0c95a9177b26", // normal
         'AppointmentCategoryId3': '',
         'AppointmentFor2': 'Individual',
         'ApplicantsNo2': '',
-        'Location1': "8d780684-1524-4bda-b138-7c71a8591944",
-        'VisaType1': "9c9e4757-8616-4a99-aed5-51240594b400",
-        'VisaSubType1': "c1860aae-3cc3-4c58-a7aa-8fa95e51926a",
+        'Location1': "8d780684-1524-4bda-b138-7c71a8591944", // RABAT
+        'VisaType1': "9c9e4757-8616-4a99-aed5-51240594b400", // Long Stay Visa RABAT
+        'VisaSubType1': "c1860aae-3cc3-4c58-a7aa-8fa95e51926a", // Family Member of Portuguese Citizen for family reunification
         'Mission1': '',
         'AppointmentFor3': "Individual",
         'ApplicantsNo3': '',
@@ -84,4 +93,11 @@ if (localStorage.calendar == 'true') {
     };
 
     xhr.send(data);
+
+
+
+
+
+
+
 }
