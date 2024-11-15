@@ -672,6 +672,7 @@ setInterval(function() {
 
 
     }
+    //   $("#VisaSubType_listbox > .k-item:contains('Tourism')").click();
      let CityStates = ['Rabat', 'Casablanca'];
     let currentCityIndex = 0;
     function toggleCitites(button){
@@ -679,9 +680,51 @@ setInterval(function() {
        let selectedCity = CityStates[currentCityIndex];
         console.log("Selected City: " + selectedCity);
         if (selectedCity === 'Rabat') {
-            $("li.k-item:contains('Rabat')").click();
-        } else if (selectedCity === 'Casablanca') {
+              if( $('#VisaType').val() == '084cd40f-c448-475e-8873-6b5eff2e01bf'){
+            $('#VisaType').val('9c9e4757-8616-4a99-aed5-51240594b400')   //  long stay rabat
+                if($('#VisaSubTypeId').val() == 'a11c56c4-238d-4bc1-bc69-1a416021548e'){
+                
+                $('#VisaSubTypeId').val('2a3e1559-ef97-458c-9c1e-44b47de28761') // job search
+                
+                }else if($('#VisaSubTypeId').val() == '8bed6e49-5eec-4ded-a583-13ea16114436'){
+                $('#VisaSubTypeId').val('083aff67-9d4b-4778-afc7-068838a8b815') // work
+                }  
+                  
+            }else if ($('#VisaType').val() == 'c104ec3c-c7ec-4547-838a-146bf82337fe'){
+                
+            $('#VisaType').val('50d39732-ee2a-4584-a5e8-f9d7e7d453a0')   // short stay rabat 
+                
+                if($('#VisaSubTypeId').val() == '45eab498-af02-415f-ba9e-44ac613f5f40'){
+                
+                $('#VisaSubTypeId').val('72067d1a-eb81-4125-a59c-192da0169977') // tourism or any other 
+                }
+                
+                
+                }
+             $("li.k-item:contains('Rabat')").click();
+            
+            } else if (selectedCity === 'Casablanca') {
             $("li.k-item:contains('Casablanca')").click();
+              if( $('#VisaType').val() == '9c9e4757-8616-4a99-aed5-51240594b400'){
+            $('#VisaType').val('084cd40f-c448-475e-8873-6b5eff2e01bf')   //  long stay casa
+                    if($('#VisaSubTypeId').val() == '2a3e1559-ef97-458c-9c1e-44b47de28761'){
+                
+                $('#VisaSubTypeId').val('a11c56c4-238d-4bc1-bc69-1a416021548e') // job search 
+                
+                }else if($('#VisaSubTypeId').val() == '083aff67-9d4b-4778-afc7-068838a8b815'){
+                $('#VisaSubTypeId').val('8bed6e49-5eec-4ded-a583-13ea16114436') // work
+                }  
+                  
+            }else if ($('#VisaType').val() == '50d39732-ee2a-4584-a5e8-f9d7e7d453a0'){
+            $('#VisaType').val('c104ec3c-c7ec-4547-838a-146bf82337fe')   // short stay casa 
+                  if($('#VisaSubTypeId').val() == '72067d1a-eb81-4125-a59c-192da0169977'){
+                
+                $('#VisaSubTypeId').val('45eab498-af02-415f-ba9e-44ac613f5f40')  // tourism
+                }
+                
+                
+            }
+            
         }
         // تحديث النص على الزر
         button.textContent = "City : " + selectedCity;
