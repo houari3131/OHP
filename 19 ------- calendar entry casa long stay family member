@@ -1,3 +1,5 @@
+if (localStorage.calendar == 'true') {
+
 var linkVerfy = "https://morocco.blsportugal.com/MAR/blsAppointment/ManageAppointment?appointmentFor=" + localStorage.For + "&applicantsNo=" + localStorage.NumberOfFamily + "&visaType=" + localStorage.VisaTypeId + "&visaSubType=" + localStorage.VisaSubTypeId + "&appointmentCategory=" + localStorage.CatId + "&location=" + localStorage.LocationId + '&data=';
 
    // 50d39732-ee2a-4584-a5e8-f9d7e7d453a0                short stay rabat
@@ -88,3 +90,4 @@ var linkVerfy = "https://morocco.blsportugal.com/MAR/blsAppointment/ManageAppoin
     };
 
     xhr.send(data);
+}
