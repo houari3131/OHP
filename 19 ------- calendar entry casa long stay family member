@@ -1,0 +1,90 @@
+var linkVerfy = "https://morocco.blsportugal.com/MAR/blsAppointment/ManageAppointment?appointmentFor=" + localStorage.For + "&applicantsNo=" + localStorage.NumberOfFamily + "&visaType=" + localStorage.VisaTypeId + "&visaSubType=" + localStorage.VisaSubTypeId + "&appointmentCategory=" + localStorage.CatId + "&location=" + localStorage.LocationId + '&data=';
+
+   // 50d39732-ee2a-4584-a5e8-f9d7e7d453a0                short stay rabat
+    // 77214a85-6915-41a8-8adf-b94524b8384b                                                    Spouse of Portuguese citizen for a short visit to Portugal  
+    
+    
+    
+    const data = new URLSearchParams({
+        'AppointmentCategoryId4': '',
+        'AppointmentFor4': "Individual",
+        'ApplicantsNo4': '',
+        'Location5': '',
+        'VisaType5': '',
+        'VisaSubType5': '',
+        'Mission5': '',
+        'Location4': '',
+        'VisaType4': '',
+        'VisaSubType4': '',
+        'Mission4': '',
+        'AppointmentCategoryId5': "5c2e8e01-796d-4347-95ae-0c95a9177b26", // normal
+        'AppointmentCategoryId3': '',
+        'AppointmentFor2': 'Individual',
+        'ApplicantsNo2': '',
+        'Location1': "60d2df036755e8de168d8db7", // CASA
+        'VisaType1': "084cd40f-c448-475e-8873-6b5eff2e01bf", // Long Stay Visa RABAT
+        'VisaSubType1': "4522abc0-3f18-4556-84c1-9aefdd3e7afb", // Family Member of Portuguese Citizen for family reunification
+        'Mission1': '',
+        'AppointmentFor3': "Individual",
+        'ApplicantsNo3': '',
+        'Location2': '',
+        'VisaType2': '',
+        'VisaSubType2': '',
+        'Mission2': '',
+        'AppointmentCategoryId2': '',
+        'AppointmentCategoryId1': '',
+        'Location3': '',
+        'VisaType3': '',
+        'VisaSubType3': '',
+        'Mission3': '',
+        'AppointmentFor5': "Individual",
+        'ApplicantsNo5': '',
+        'AppointmentFor1': 'Individual',
+        'ApplicantsNo1': '',
+        'CaptchaData': document.querySelector("#CaptchaData").value,
+        'ScriptData': 'jo+WrPiNo78ZDGuNpLOXpLkB1dnebCQd/JKF6XhqfJaSVQcHjivr7gtuICjCpWHW5+AUHH8t0mEG7ZswEHZ0NjkN6bTar0mXS7WFooLML8eZq1rikC99mX5bCPKNusBvncDCdgGuqqR0K8R+2ePcf0QQE0jxAzDJfSiw4UiMMvK8kizlaT2jdYxIsn5OKC5rWfWMRlHcpY/e0IhtlxI2LVRMwZuFC7Ky422t13ReFmKDKf+5OciAe5aaLQOtbRG3aUwGAjKrJK1lBwPxYNLk3WT6EE4iEYFNb9J/djFv13sLYPN3qRhZkQ1f7fSLafEiSAjKgUBcNdVdT3Yjyd4iGNnvMSF3f2DLRHt0fK1DYoU=',
+        'ResponseData': '[]',
+        'Id': document.querySelector("#Id").value,
+        'Id1': document.querySelector("#Id1").value,
+        'Id2': document.querySelector("#Id2").value,
+        'Id3': document.querySelector("#Id3").value,
+        'Id4': document.querySelector("#Id4").value,
+        'Id5': document.querySelector("#Id5").value,
+        'Id6': document.querySelector("#Id6").value,
+        'Id7': document.querySelector("#Id7").value,
+        'Id8': document.querySelector("#Id8").value,
+        'Id9': document.querySelector("#Id9").value,
+        'Id10': document.querySelector("#Id10").value,
+        '__RequestVerificationToken': $("input:hidden[name=\"__RequestVerificationToken\"]").val(),
+        'X-Requested-With': "XMLHttpRequest"
+    });
+
+    let xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.open("POST", window.location.href);
+    xhr.setRequestHeader("authority", 'morocco.blsportugal.com');
+    xhr.setRequestHeader("accept", "*/*");
+    xhr.setRequestHeader("accept-language", 'fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7');
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+    xhr.setRequestHeader("x-requested-with", "XMLHttpRequest");
+
+    xhr.onload = function () {
+        console.log("Response:", xhr.response);  // Log the response to understand its structure
+        try {
+            const responseJson = JSON.parse(xhr.response);
+
+            if (responseJson.returnUrl) {
+                window.location.href = responseJson.returnUrl.split('?')[0] + '?' + linkVerfy.split('?')[1] + window.location.href.split("data=")[1];
+            } else {
+                console.error("returnUrl is undefined in the response. Response JSON:", responseJson);
+            }
+        } catch (e) {
+            console.error("Failed to parse response:", e);
+        }
+    };
+
+    xhr.onerror = function () {
+        console.error("Request failed. Please check the server response or network.");
+    };
+
+    xhr.send(data);
