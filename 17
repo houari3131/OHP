@@ -17,8 +17,8 @@ localStorage.noti = 'OK';
         { includes: 'home/index', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script15','http://localhost:' + localStorage.portu+'/fetch-script/13']},
    { includes: 'Home/index', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script15','http://localhost:' + localStorage.portu+'/fetch-script/13']},
       //  { includes: 'MAR/newcaptcha/logincaptcha', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2','http://localhost:' + localStorage.portu+'/fetch-script/3','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
-        { includes: '/MAR/bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/4','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
-        { includes: '/MAR/Bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/4','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
+        { includes: '/MAR/bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/62','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
+        { includes: '/MAR/Bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/62','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
 
        { includes: '/MAR/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/5'] },
       { includes: '/VisaType?data', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/66'] },
