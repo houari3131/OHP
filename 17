@@ -20,7 +20,7 @@ localStorage.noti = 'OK';
         { includes: '/MAR/bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/62','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
         { includes: '/MAR/Bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/62','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
 
-       { includes: '/MAR/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/5'] },
+       { includes: '/MAR/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/62'] },
       { includes: '/VisaType?data', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/66'] },
   { includes: '/AppointmentCaptcha?data', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/61'] },
   { includes: 'SlotSelection', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/Nen5p'] },
