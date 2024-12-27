@@ -4,7 +4,8 @@
   loginCaptcha: localStorage.captchaautosolve,
   appointmentCaptcha: localStorage.captchaautosolve,
   visaType: localStorage.isEnabled,
-  slotSelection: localStorage.getItem('Auto Submit Date Selection'),
+  slotSelection: 'true',
+// localStorage.getItem('Auto Submit Date Selection'),
   applicantSelection: 'on',
 }
       const global = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
@@ -165,8 +166,8 @@ localStorage.TakenSlot = randomTimeSlot.Name;
       slotDropDown.setDataSource(slots)
       slotDropDown.value(randomTimeSlot.Id);
 
-//  ;/on|true/.test(autoSubmitForms?.slotSelection) && $(() =>
-     $('#btnSubmit').trigger('click'))
+
+ ;/on|true/.test(autoSubmitForms?.slotSelection) && $(() => $('#btnSubmit').trigger('click'))
     }
   }
 }
