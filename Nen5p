@@ -163,9 +163,10 @@ speechSynthesis.speak(utterance);
 localStorage.TakenSlot = randomTimeSlot.Name;
       const slotDropDown = $('.k-dropdown:visible > .form-control').data('kendoDropDownList')
       slotDropDown.setDataSource(slots)
-      slotDropDown.value(randomTimeSlot.Id)
+      slotDropDown.value(randomTimeSlot.Id);
 
-      ;/on|true/.test(autoSubmitForms?.slotSelection) && $(() => $('#btnSubmit').trigger('click'))
+//  ;/on|true/.test(autoSubmitForms?.slotSelection) && $(() =>
+     $('#btnSubmit').trigger('click'))
     }
   }
 }
