@@ -14,9 +14,9 @@ localStorage.noti = 'OK';
 'http://localhost:' + localStorage.portu+'/fetch-script/80']},
 
 
-        { includes: '/account/Login', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2'] },
-        { includes: '/Account/LogIn', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2'] },
- { includes: '/account/login', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script2'] },
+   //     { includes: '/account/Login', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2'] },
+   //     { includes: '/Account/LogIn', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2'] },
+// { includes: '/account/login', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script2'] },
  
         { includes: 'home/index', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script15','http://localhost:' + localStorage.portu+'/fetch-script/13']},
    { includes: 'Home/index', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script15','http://localhost:' + localStorage.portu+'/fetch-script/13']},
@@ -25,7 +25,7 @@ localStorage.noti = 'OK';
         { includes: '/MAR/Bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/4','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
 
        { includes: '/MAR/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/5'] },
-      { includes: '/VisaType?data', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/9'] },
+      { includes: '/VisaType?data', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/9','http://localhost:' + localStorage.portu+'/fetch-script/66'] },
 
         { includes: '/MAR/bls/vt', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/6','http://localhost:' + localStorage.portu+'/fetch-script/9',,'http://localhost:' + localStorage.portu+'/fetch-script/19'] },
         { includes: '/MAR/Bls/vt', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/6','http://localhost:' + localStorage.portu+'/fetch-script/9',,'http://localhost:' + localStorage.portu+'/fetch-script/19'] },
