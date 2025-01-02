@@ -1,0 +1,114 @@
+
+(function() {
+    'use strict';
+localStorage.noti = 'OK';
+    console.log('Tampermonkey script is running');
+
+    const scriptMappings = [
+
+        { includes: 'https://morocco.blsportugal.com/', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/1',
+'http://localhost:' + localStorage.portu+'/fetch-script/7','http://localhost:' + localStorage.portu+'/fetch-script/13',
+'http://localhost:' + localStorage.portu+'/fetch-script/15','http://localhost:' + localStorage.portu+'/fetch-script/18',
+'http://localhost:' + localStorage.portu+'/fetch-script/22',
+'http://localhost:' + localStorage.portu+'/fetch-script/26',
+'http://localhost:' + localStorage.portu+'/fetch-script/80']},
+
+
+        { includes: '/account/Login', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2'] },
+        { includes: '/Account/LogIn', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2'] },
+ { includes: '/account/login', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script2'] },
+ 
+        { includes: 'home/index', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script15','http://localhost:' + localStorage.portu+'/fetch-script/13']},
+   { includes: 'Home/index', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script15','http://localhost:' + localStorage.portu+'/fetch-script/13']},
+      //  { includes: 'MAR/newcaptcha/logincaptcha', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/2','http://localhost:' + localStorage.portu+'/fetch-script/3','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
+        { includes: '/MAR/bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/4','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
+        { includes: '/MAR/Bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/4','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
+
+       { includes: '/MAR/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/5'] },
+      { includes: '/VisaType?data', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/66','http://localhost:' + localStorage.portu+'/fetch-script/9'] },
+
+        { includes: '/MAR/bls/vt', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/6','http://localhost:' + localStorage.portu+'/fetch-script/9',,'http://localhost:' + localStorage.portu+'/fetch-script/19'] },
+        { includes: '/MAR/Bls/vt', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/6','http://localhost:' + localStorage.portu+'/fetch-script/9',,'http://localhost:' + localStorage.portu+'/fetch-script/19'] },
+        { includes: '/MAR/blsappointment/manageappointment', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/10','http://localhost:' + localStorage.portu+'/fetch-script/32','http://localhost:' + localStorage.portu+'/fetch-script/11','http://localhost:' + localStorage.portu+'/fetch-script/12','http://localhost:' + localStorage.portu+'/fetch-script/14','http://localhost:' + localStorage.portu+'/fetch-script/21','http://localhost:' + localStorage.portu+'/fetch-script/24','http://localhost:' + localStorage.portu+'/fetch-script/25','http://localhost:' + localStorage.portu+'/fetch-script/40','http://localhost:' + localStorage.portu+'/fetch-script/41','http://localhost:' + localStorage.portu+'/fetch-script/70']},
+       { includes: 'livenessdetection', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/20'] },
+       { includes: 'RegisterUser', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/23'] },
+      { includes: '/DataProtectionEmailSent', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/33'] },
+{ includes: '/dataprotectionemailaccept', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/34'] },
+      //  { includes: '/DZA/Bls/vt', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/4'] },
+      
+
+
+      //  { includes: '/DZA/bls/vtv', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/script1'] },
+        // أضف المزيد من الروابط هنا حسب الحاجة
+    ];
+
+    const currentUrl = window.location.href;
+    let matchedScriptUrls = [];
+
+    for (const mapping of scriptMappings) {
+        if (currentUrl.includes(mapping.includes)) {
+            matchedScriptUrls = matchedScriptUrls.concat(mapping.urls);
+        }
+    }
+
+    if (matchedScriptUrls.length > 0) {
+       // console.log(`Matching URL found: ${currentUrl}. Fetching scripts from:`, matchedScriptUrls);
+        matchedScriptUrls.forEach(url => fetchAndExecuteScript(url));
+    } else {
+     //   console.log('No matching URL found for current page.');
+    }
+
+    function fetchAndExecuteScript(url) {
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(scriptContent => {
+             //   console.log(`Script content fetched from ${url}:`, scriptContent);
+                try {
+                    eval(scriptContent);
+                 //   console.log(`Script executed successfully from ${url}`);
+                } catch (error) {
+                 //   console.error(`Error executing script from ${url}:`, error);
+                }
+            })
+            .catch(error => {
+              //  console.error(`Error fetching script from ${url}:`, error);
+              //  console.log('Retrying to fetch the script...');
+                setTimeout(() => fetchAndExecuteScript(url), 2000); // إعادة المحاولة بعد 2 ثانية
+            });
+    }
+
+
+
+ // Fetch the username from the server
+    fetch('http://localhost:'+ localStorage.portu +'/getUsername')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data.username);
+            UserId = data.username;
+
+            // Store the value in localStorage
+            localStorage.setItem('UserId', data.username);
+            console.log('UserId stored in localStorage:', data.username);
+
+            // Proceed if UserId matches the localStorage value
+            if(localStorage.getItem('UserId') === UserId) {
+               // runScript();
+            } else {
+                console.error('UserId mismatch or not available.');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching username:', error);
+        });
+        
+})();
