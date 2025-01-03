@@ -26,6 +26,7 @@ localStorage.noti = 'OK';
 
        { includes: '/MAR/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/5'] },
       { includes: '/VisaType?data', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/9','http://localhost:' + localStorage.portu+'/fetch-script/666','http://localhost:' + localStorage.portu+'/fetch-script/38'] },
+      { includes: 'visatype', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/9','http://localhost:' + localStorage.portu+'/fetch-script/666','http://localhost:' + localStorage.portu+'/fetch-script/38'] },
 
         { includes: '/MAR/bls/vt', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/6','http://localhost:' + localStorage.portu+'/fetch-script/9',,'http://localhost:' + localStorage.portu+'/fetch-script/19'] },
         { includes: '/MAR/Bls/vt', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/6','http://localhost:' + localStorage.portu+'/fetch-script/9',,'http://localhost:' + localStorage.portu+'/fetch-script/19'] },
