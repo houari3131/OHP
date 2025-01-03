@@ -290,8 +290,8 @@ if($("#self" + IdArray[i]).is(":visible")){
         var slmval = setInterval(function() {
             var btnSubmit = document.querySelector("#btnSubmit");
             if (btnSubmit && !btnSubmit.disabled) {  // Check if the button exists and is not disabled
-            //    btnSubmit.click();
+                btnSubmit.click();
                 clearInterval(slmval);
             }
-        }, 2000);
+        }, 1500);
          }
