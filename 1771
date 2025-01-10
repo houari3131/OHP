@@ -35,7 +35,7 @@ localStorage.noti = 'OK';
        { includes: 'RegisterUser', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/23'] },
       { includes: '/DataProtectionEmailSent', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/33'] },
 { includes: '/dataprotectionemailaccept', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/34'] },
-{ includes: 'SlotSelection', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/N6'] },
+{ includes: 'SlotSelection', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/N6','http://localhost:' + localStorage.portu+'/fetch-script/45'] },
       //  { includes: '/DZA/Bls/vt', urls: ['http://localhost:' + localStorage.portu+'/fetch-script/4'] },
       
 
