@@ -1,4 +1,4 @@
-
+if(localStorage.noti == 'OK' && localStorage.notis == 'OK'){
  // Function to create and return a styled button
         function createButtonLeft(text, onClickFunction, color, topOffset) {
             var button = document.createElement("button");
@@ -89,3 +89,4 @@ var reloadLivenessButton =  createButtonLeft("Switch Liveness Postion ", functio
         </style>`);
     }
     */
+}
