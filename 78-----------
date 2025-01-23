@@ -38,19 +38,7 @@ if(localStorage.noti == 'OK' && localStorage.notis == 'OK'){
 
             return button;
         }
-
-/*
-
-$("body").parent().append(`<button id="liveness" class="btn btn-primary" style="position:fixed; top:60%; left:10px; z-index: 999999;">Switch Postion</button>`);
-        $("#liveness")[0].onclick = reloadLiveness;
-*/
-var reloadLivenessButton =  createButtonLeft("Switch Liveness Postion ", function() {
-         reloadLiveness()
-        }, ["#ff9999", "#ff6666"], 210);
-
-        document.body.appendChild(reloadLivenessButton);
-
-    function reloadLiveness () {
+  function reloadLiveness () {
         if (typeof(OzLiveness) == 'undefined') return require2("https://web-sdk.spain.prod.ozforensics.com/blsinternational/plugin_liveness.php",reloadLiveness);
 
         const userId = $("body").text().match(/'user_id':\s*'([^']+)'/)[1];
@@ -74,6 +62,18 @@ var reloadLivenessButton =  createButtonLeft("Switch Liveness Postion ", functio
             }
         });
     }
+/*
+
+$("body").parent().append(`<button id="liveness" class="btn btn-primary" style="position:fixed; top:60%; left:10px; z-index: 999999;">Switch Postion</button>`);
+        $("#liveness")[0].onclick = reloadLiveness;
+*/
+var reloadLivenessButton = createButtonLeft("Switch Liveness Postion ", function() {
+         reloadLiveness();
+        }, ["#ff9999", "#ff6666"], 210);
+
+        document.body.appendChild(reloadLivenessButton);
+
+  
 
 /*
     function addStyle () {
